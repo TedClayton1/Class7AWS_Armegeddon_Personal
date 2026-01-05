@@ -1,4 +1,3 @@
-# Armegeddon_AWS_project_group_my_submission
 # my-armageddon-project-1
 ### Group Leader: Omar Fleming
 ### Team Leader: Larry Harris
