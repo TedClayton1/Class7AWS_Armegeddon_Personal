@@ -80,5 +80,5 @@ variable "db_password" {
 variable "sns_email_endpoint" {
   description = "Email for SNS subscription (PagerDuty simulation)."
   type        = string
-  default     = "ted_clayton@hotmail.com" # TODO: student supplies
+  default     = "larrygharris76@gmail.com" # TODO: student supplies
 }

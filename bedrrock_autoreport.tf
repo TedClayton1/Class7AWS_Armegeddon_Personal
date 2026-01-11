@@ -31,7 +31,7 @@ resource "aws_iam_role" "bos_ir_lambda_role01" {
     Version = "2012-10-17"
     Statement = [{
       Effect    = "Allow"
-      Principal = { Service = "lambda.amazonaws.com" } # Fixed: quoted service
+      Principal = { Service = "lambda.amazonaws.com" }  # Fixed: quoted service
       Action    = "sts:AssumeRole"
     }]
   })
@@ -106,17 +106,17 @@ resource "aws_iam_role_policy_attachment" "bos_ir_lambda_basiclogs01" {
 # Package your Lambda code properly (recommended)
 data "archive_file" "bos_lambda_package" {
   type        = "zip"
-  source_dir  = "${path.module}/lambda_ir_reporter" # Create this folder with your code
+  source_dir  = "${path.module}/lambda_ir_reporter"  # Create this folder with your code
   output_path = "${path.module}/lambda_ir_reporter.zip"
 }
 
 # Lambda Function
 resource "aws_lambda_function" "bos_ir_lambda01" {
-  function_name = "${var.project_name}-ir-reporter01"
-  role          = aws_iam_role.bos_ir_lambda_role01.arn
-  handler       = "handler.lambda_handler" # Assumes your file is handler.py
-  runtime       = "python3.11"
-  timeout       = 60
+  function_name    = "${var.project_name}-ir-reporter01"
+  role             = aws_iam_role.bos_ir_lambda_role01.arn
+  handler          = "handler.lambda_handler"  # Assumes your file is handler.py
+  runtime          = "python3.11"
+  timeout          = 60
 
   filename         = data.archive_file.bos_lambda_package.output_path
   source_code_hash = data.archive_file.bos_lambda_package.output_base64sha256
@@ -128,7 +128,7 @@ resource "aws_lambda_function" "bos_ir_lambda01" {
       WAF_LOG_GROUP    = "aws-waf-logs-${var.project_name}-webacl01"
       SECRET_ID        = "${var.project_name}/rds/mysql"
       SSM_PARAM_PATH   = "/lab/db/"
-      BEDROCK_MODEL_ID = "anthropic.claude-3-sonnet-20240229-v1:0" # Example - change to available model
+      BEDROCK_MODEL_ID = "anthropic.claude-3-sonnet-20240229-v1:0"  # Example - change to available model
       SNS_TOPIC_ARN    = aws_sns_topic.bos_sns_topic01.arn
     }
   }
@@ -146,7 +146,7 @@ resource "aws_lambda_permission" "bos_allow_sns_invoke01" {
   statement_id  = "AllowExecutionFromSNS"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.bos_ir_lambda01.function_name
-  principal     = "sns.amazonaws.com" # Fixed: quoted
+  principal     = "sns.amazonaws.com"  # Fixed: quoted
   source_arn    = aws_sns_topic.bos_sns_topic01.arn
 }
 

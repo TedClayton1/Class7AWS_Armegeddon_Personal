@@ -5,7 +5,7 @@
       "Sid": "ReadSpecificSecret",
       "Effect": "Allow",
       "Action": ["secretsmanager:GetSecretValue"],
-      "Resource": "arn:aws:secretsmanager:us-east-1:737679990112:secret:bos/rds/mysql*"
+      "Resource": "arn:aws:secretsmanager:us-east-1:891377135193:secret:bos/rds/mysql*"
     }
   ]
 }
