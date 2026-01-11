@@ -52,3 +52,4 @@ Availability Zone
     - student adds inbound rules (HTTP 80, SSH 22 from their IP)
 
 *** reminder change SSH rule!!!
+
