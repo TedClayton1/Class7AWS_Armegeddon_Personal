@@ -80,7 +80,7 @@ variable "db_password" {
 variable "sns_email_endpoint" {
   description = "Email for SNS subscription (PagerDuty simulation)."
   type        = string
-  default     = "larrygharris76@gmail.com" # TODO: student supplies
+  default     = "ted_clayton@hotmail.com" # TODO: student supplies
 }
 
 variable "domain_name" {
@@ -128,18 +128,18 @@ variable "alb_5xx_evaluation_periods" {
 variable "enable_alb_access_logs" {
   description = "Whether to create the S3 bucket for ALB access logs"
   type        = bool
-  default     = true          # ← choose your preferred default
+  default     = true # ← choose your preferred default
 }
 
 variable "manage_route53_in_terraform" {
   description = "Whether to let Terraform manage creation / updates of the Route 53 hosted zone"
   type        = bool
-  default     = true   # ← most people start with true here
+  default     = true # ← most people start with true here
 }
 variable "waf_log_destination" {
   description = "Where to send AWS WAFv2 logs: 'cloudwatch', 'firehose', 's3', or 'none'"
   type        = string
-  default     = "none"          # or "cloudwatch" if you want it on by default
+  default     = "none" # or "cloudwatch" if you want it on by default
   validation {
     condition     = contains(["cloudwatch", "firehose", "s3", "none"], var.waf_log_destination)
     error_message = "Valid values are: cloudwatch, firehose, s3, none."
@@ -149,13 +149,13 @@ variable "waf_log_destination" {
 variable "waf_log_retention_days" {
   description = "Number of days to retain WAF CloudWatch log events (0 = never expire)"
   type        = number
-  default     = 90          # ← common sensible default; change as needed
+  default     = 90 # ← common sensible default; change as needed
 }
 
 
 variable "route53_hosted_zone_id" {
-  type        = string
-  default     = ""
+  type    = string
+  default = ""
 
   validation {
     condition     = var.route53_hosted_zone_id == "" || can(regex("^[A-Z0-9]{21}$", var.route53_hosted_zone_id))

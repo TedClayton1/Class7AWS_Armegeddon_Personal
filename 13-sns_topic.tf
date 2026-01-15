@@ -26,6 +26,6 @@ resource "aws_lambda_permission" "bos_allow_sns_invoke01" {
   statement_id  = "AllowExecutionFromSNS"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.bos_ir_lambda01.function_name
-  principal     = "sns.amazonaws.com"  # Fixed: quoted
+  principal     = "sns.amazonaws.com" # Fixed: quoted
   source_arn    = aws_sns_topic.bos_sns_topic01.arn
 }
