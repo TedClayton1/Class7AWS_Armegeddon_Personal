@@ -27,9 +27,9 @@ resource "aws_iam_role" "bos_ir_lambda_role01" {
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
-      Effect = "Allow"
+      Effect    = "Allow"
       Principal = { Service = "lambda.amazonaws.com" }
-      Action = "sts:AssumeRole"
+      Action    = "sts:AssumeRole"
     }]
   })
 }
@@ -117,7 +117,7 @@ resource "aws_iam_role_policy_attachment" "bos_ir_lambda_attach01" {
 # Explanation: Basic Lambda logging—because even droids need diaries.
 resource "aws_iam_role_policy_attachment" "bos_ir_lambda_basiclogs01" {
   role       = aws_iam_role.bos_ir_lambda_role01.name
-  policy_arn  = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
 # Explanation: The Lambda itself—bos’s incident scribe that writes your postmortem while you fight fires.
@@ -134,13 +134,13 @@ resource "aws_lambda_function" "bos_ir_lambda01" {
 
   environment {
     variables = {
-      REPORT_BUCKET        = aws_s3_bucket.bos_ir_reports_bucket01.bucket
-      APP_LOG_GROUP        = "/aws/ec2/${var.project_name}-rds-app"
-      WAF_LOG_GROUP        = "aws-waf-logs-${var.project_name}-webacl01"
-      SECRET_ID            = "${var.project_name}/rds/mysql"
-      SSM_PARAM_PATH       = "/lab/db/"
-      BEDROCK_MODEL_ID     = "upstage-solar-pro-quantized" # TODO: students choose a Bedrock text model id available in their account/region
-      SNS_TOPIC_ARN        = aws_sns_topic.bos_sns_topic01.arn
+      REPORT_BUCKET    = aws_s3_bucket.bos_ir_reports_bucket01.bucket
+      APP_LOG_GROUP    = "/aws/ec2/${var.project_name}-rds-app"
+      WAF_LOG_GROUP    = "aws-waf-logs-${var.project_name}-webacl01"
+      SECRET_ID        = "${var.project_name}/rds/mysql"
+      SSM_PARAM_PATH   = "/lab/db/"
+      BEDROCK_MODEL_ID = "upstage-solar-pro-quantized" # TODO: students choose a Bedrock text model id available in their account/region
+      SNS_TOPIC_ARN    = aws_sns_topic.bos_sns_topic01.arn
     }
   }
 }
