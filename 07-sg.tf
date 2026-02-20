@@ -1,3 +1,8 @@
+#Explanation: This is Cloudfront Origin which is referenced without it Terraform will throw error###################
+# data "aws_ec2_managed_prefix_list" "cloudfront_origin" {
+#   name = "com.amazonaws.global.cloudfront.origin-facing"
+# }
+
 #Explanation: EC2 SG is bos’s bodyguard—only let in what you mean to.
 resource "aws_security_group" "bos_ec2_sg01" {
   name        = "${local.name_prefix}-ec2-sg01"
@@ -13,11 +18,12 @@ resource "aws_security_group" "bos_ec2_sg01" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "bos_ec2_http" {
-  security_group_id = aws_security_group.bos_ec2_sg01.id
-  cidr_ipv4         = "0.0.0.0/0"
-  from_port         = 80
-  ip_protocol       = "tcp"
-  to_port           = 80
+  security_group_id            = aws_security_group.bos_ec2_sg01.id
+  referenced_security_group_id = aws_security_group.bos_alb_sg01.id
+  # cidr_ipv4         = "0.0.0.0/0"
+  from_port   = 80
+  ip_protocol = "tcp"
+  to_port     = 80
 }
 
 data "http" "myip" {
@@ -92,7 +98,7 @@ resource "aws_security_group" "bos_vpce_sg01" {
 # VPC Interface SG Rules
 resource "aws_vpc_security_group_ingress_rule" "bos_vpce_ingress" {
   security_group_id            = aws_security_group.bos_vpce_sg01.id
-  referenced_security_group_id = aws_security_group.bos_ec2_sg01.id 
+  referenced_security_group_id = aws_security_group.bos_ec2_sg01.id
 
   from_port   = 443
   to_port     = 443
@@ -122,50 +128,89 @@ resource "aws_security_group" "bos_alb_sg01" {
   # TODO: students add inbound 80/443 from 0.0.0.0/0
   # TODO: students set outbound to target group port (usually 80) to private targets
 
+  lifecycle {
+    create_before_destroy = true
+  }
+
+
   tags = {
     Name = "${var.project_name}-alb-sg01"
   }
 }
 
-resource "aws_vpc_security_group_ingress_rule" "bos_alb_http" {
-  security_group_id = aws_security_group.bos_alb_sg01.id
-  cidr_ipv4         = "0.0.0.0/0"
-  from_port         = 80
-  ip_protocol       = "tcp"
-  to_port           = 80
-}
+# resource "aws_vpc_security_group_ingress_rule" "bos_alb_http" {
+#   security_group_id = aws_security_group.bos_alb_sg01.id
+#   cidr_ipv4         = "0.0.0.0/0"
+#   from_port         = 80
+#   ip_protocol       = "tcp"
+#   to_port           = 80
+# }
 
 
-resource "aws_vpc_security_group_ingress_rule" "bos_alb_https" {
-  security_group_id = aws_security_group.bos_alb_sg01.id
-  cidr_ipv4         = "0.0.0.0/0"
-  from_port         = 443
-  ip_protocol       = "tcp"
-  to_port           = 443
-}
+# resource "aws_vpc_security_group_ingress_rule" "bos_alb_https" {
+#   security_group_id = aws_security_group.bos_alb_sg01.id
+#   cidr_ipv4         = "0.0.0.0/0"
+#   from_port         = 443
+#   ip_protocol       = "tcp"
+#   to_port           = 443
+# }
 
 # Egress: Remains unchanged (allow all outbound)
-resource "aws_vpc_security_group_egress_rule" "bos_alb_all_traffic" {
-  security_group_id = aws_security_group.bos_rds_sg01.id
-  cidr_ipv4         = "0.0.0.0/0"
-  ip_protocol       = "-1" # All protocols and ports
-  description       = "Allow all outbound traffic"
-}
-#Explanation: bos only opens the hangar door — allow ALB -> EC2 on app port (e.g., 80).
-resource "aws_security_group_rule" "bos_ec2_ingress_from_alb01" {
-  type                     = "ingress"
-  security_group_id        = aws_security_group.bos_alb_sg01.id
-  from_port                = 80
-  to_port                  = 80
-  protocol                 = "tcp"
-  source_security_group_id = aws_security_group.bos_alb_sg01.id
+# resource "aws_vpc_security_group_egress_rule" "bos_alb_all_traffic" {
+#   security_group_id = aws_security_group.bos_alb_sg01.id
+#   cidr_ipv4         = "0.0.0.0/0"
+#   ip_protocol       = "-1"
+#   description       = "Allow all outbound traffic"
+# }
 
-  # TODO: students ensure EC2 app listens on this port (or change to 8080, etc.)
-}
+# #Explanation: bos only opens the hangar door — allow ALB -> EC2 on app port (e.g., 80).
+# resource "aws_security_group_rule" "bos_ec2_ingress_from_alb01" {
+#   type                     = "ingress"
+#   security_group_id        = aws_security_group.bos_alb_sg01.id
+#   from_port                = 80
+#   to_port                  = 80
+#   protocol                 = "tcp"
+#   source_security_group_id = aws_security_group.bos_alb_sg01.id
 
-resource "aws_vpc_security_group_egress_rule" "bos_ec2_egress_from_alb01" {
+#   # TODO: students ensure EC2 app listens on this port (or change to 8080, etc.)
+# }
+
+# "Below AWS security groups already include default outbound allow-all; explicit dupliation cause API errors"
+# resource "aws_vpc_security_group_egress_rule" "bos_ec2_egress_from_alb01" {
+#   security_group_id = aws_security_group.bos_alb_sg01.id
+#   cidr_ipv4         = "0.0.0.0/0"
+#   ip_protocol       = "-1" # All protocols and ports
+#   description       = "Allow all outbound traffic"
+# }
+
+# resource "aws_vpc_security_group_ingress_rule" "bos_alb_https_from_cloudfront" {
+#   security_group_id = aws_security_group.bos_alb_sg01.id
+
+#   from_port   = 443
+#   to_port     = 443
+#   ip_protocol = "tcp"
+
+#   prefix_list_id = data.aws_ec2_managed_prefix_list.cloudfront_origin.id
+# }
+
+
+
+
+# Crete an ALB SG ingress rule that allows only that prefex list on 443
+resource "aws_vpc_security_group_ingress_rule" "bos_alb_https_from_cloudfront" {
   security_group_id = aws_security_group.bos_alb_sg01.id
-  cidr_ipv4         = "0.0.0.0/0"
-  ip_protocol       = "-1" # All protocols and ports
-  description       = "Allow all outbound traffic"
+  from_port         = 443
+  to_port           = 443
+  ip_protocol       = "tcp"
+  prefix_list_id    = data.aws_ec2_managed_prefix_list.cloudfront_origin.id
 }
+
+# resource "aws_vpc_security_group_ingress_rule" "bos_alb_http_from_cloudfront" {
+#   security_group_id = aws_security_group.bos_alb_sg01.id
+#   ip_protocol       = "tcp"
+#   from_port         = 80
+#   to_port           = 80
+#   prefix_list_id    = data.aws_ec2_managed_prefix_list.cloudfront_origin.id
+#   description       = "Allow HTTP from CloudFront"
+# }
+

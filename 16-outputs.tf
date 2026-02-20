@@ -63,8 +63,8 @@ output "bos_target_group_arn" {
   value = aws_lb_target_group.bos_tg01.arn
 }
 
-output "larrryharrisaws_acm_cert_arn" {
-  value = aws_acm_certificate.larrryharrisaws_cert.arn
+output "bowtiez_acm_cert_arn" {
+  value = aws_acm_certificate.bowtiez_cert.arn
 }
 
 output "bos_waf_arn" {
@@ -80,6 +80,23 @@ output "bos_ir_reports_bucket" {
   value = aws_s3_bucket.bos_ir_reports_bucket01.bucket
 }
 
-output "larrryharrisaws_route53_zone_id" { value = local.larrryharrisaws_zone_id }
+output "bos_waf_log_destination" {
+  value = var.waf_log_destination
+}
 
-output "larrryharrisaws_app_url_https" { value = "https://${var.app_subdomain}.${var.domain_name}" }
+output "bos_waf_cw_log_group_name" {
+  value = var.waf_log_destination == "cloudwatch" ? aws_cloudwatch_log_group.bos_waf_log_group01[0].name : null
+}
+
+output "bos_waf_logs_s3_bucket" { value = var.waf_log_destination == "s3" ? aws_s3_bucket.bos_waf_logs_bucket01[0].bucket : null }
+
+output "bos_waf_firehose_name" { value = var.waf_log_destination == "firehose" ? aws_kinesis_firehose_delivery_stream.bos_waf_firehose01[0].name : null }
+
+output "bowtiez_route53_zone_id" { value = local.bowtiez_zone_id }
+
+output "bowtiez_app_url_https" { value = "https://${var.app_subdomain}.${var.domain_name}" }
+
+output "origin_header_value" {
+  value     = random_string.origin_header_value.result
+  sensitive = true
+}

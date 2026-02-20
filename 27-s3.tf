@@ -10,10 +10,10 @@ resource "random_string" "bucket_suffix" {
 resource "aws_s3_bucket" "bos_alb_logs" {
   bucket = "bos-alb-logs-891377135193-${random_string.bucket_suffix.result}"
 
-  force_destroy = true  # optional for lab cleanup
+  force_destroy = true # optional for lab cleanup
 }
 
-# Ownership controls (required for ALB logs)
+#Ownership controls (required for ALB logs)
 resource "aws_s3_bucket_ownership_controls" "bos_alb_logs" {
   bucket = aws_s3_bucket.bos_alb_logs.id
 
@@ -43,15 +43,15 @@ resource "aws_s3_bucket" "bos_alb_logs_bucket01" {
 }
 
 # Explanation: Block public access—bos does not publish the ship’s black box to the galaxy.
-resource "aws_s3_bucket_public_access_block" "bos_alb_logs_pab01" {
-  count = var.enable_alb_access_logs ? 1 : 0
+# resource "aws_s3_bucket_public_access_block" "bos_alb_logs_pab01" {
+#   count = var.enable_alb_access_logs ? 1 : 0
 
-  bucket                  = aws_s3_bucket.bos_alb_logs_bucket01[0].id
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
-}
+#   bucket                  = aws_s3_bucket.bos_alb_logs_bucket01[0].id
+#   block_public_acls       = true
+#   block_public_policy     = true
+#   ignore_public_acls      = true
+#   restrict_public_buckets = true
+# }
 
 # # Explanation: Bucket ownership controls prevent log delivery chaos—bos likes clean chain-of-custody.
 resource "aws_s3_bucket_ownership_controls" "bos_alb_logs_owner01" {
@@ -87,14 +87,29 @@ resource "aws_s3_bucket_policy" "bos_alb_logs_policy01" {
         }
       },
       {
-        Sid    = "AllowELBPutObject"
+        Sid    = "AWSLogDeliveryAclCheck"
         Effect = "Allow"
         Principal = {
-          Service = "elasticloadbalancing.amazonaws.com"
+          Service = "logdelivery.elasticloadbalancing.amazonaws.com"
+        }
+        Action   = "s3:GetBucketAcl"
+        Resource = aws_s3_bucket.bos_alb_logs_bucket01[0].arn
+      },
+      {
+        Sid    = "AWSLogDeliveryWrite"
+        Effect = "Allow"
+        Principal = {
+          Service = "logdelivery.elasticloadbalancing.amazonaws.com"
         }
         Action   = "s3:PutObject"
         Resource = "${aws_s3_bucket.bos_alb_logs_bucket01[0].arn}/${var.alb_access_logs_prefix}/AWSLogs/${data.aws_caller_identity.bos_self01.account_id}/*"
+        Condition = {
+          StringEquals = {
+            "s3:x-amz-acl" = "bucket-owner-full-control"
+          }
+        }
       }
+
     ]
   })
 }

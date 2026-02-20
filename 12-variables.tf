@@ -84,13 +84,13 @@ variable "sns_email_endpoint" {
 }
 
 variable "domain_name" {
-  description = "Base domain students registered (e.g., larrryharrisaws.com)."
+  description = "Base domain students registered (e.g., bowtiez.org)."
   type        = string
-  default     = "larrryharrisaws.com"
+  default     = "bowtiez.org"
 }
 
 variable "app_subdomain" {
-  description = "App hostname prefix (e.g., app.larrryharrisaws.com)."
+  description = "App hostname prefix (e.g., app.bowtiez.org)."
   type        = string
   default     = "app"
 }
@@ -171,4 +171,13 @@ variable "alb_access_logs_prefix" {
     condition     = !can(regex("(?i)AWSLogs", var.alb_access_logs_prefix))
     error_message = "alb_access_logs_prefix must NOT contain 'AWSLogs' (case-insensitive) — AWS adds this automatically."
   }
+}
+
+
+
+
+variable "enable_waf_sampled_requests_only" {
+  description = "If true, students can optionally filter/redact fields later." #Placeholder toggle
+  type        = bool
+  default     = false
 }

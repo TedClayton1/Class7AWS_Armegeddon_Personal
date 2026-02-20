@@ -25,14 +25,14 @@ resource "aws_security_group" "bos_rds_sg01" {
   }
 }
 
-# EC2 SG Rules
-resource "aws_vpc_security_group_ingress_rule" "bos_ec2_http" {
-  security_group_id = aws_security_group.bos_ec2_sg01.id
-  cidr_ipv4         = "0.0.0.0/0"
-  from_port         = 80
-  ip_protocol       = "tcp"
-  to_port           = 80
-}
+# # EC2 SG Rules
+# resource "aws_vpc_security_group_ingress_rule" "bos_ec2_http" {
+#   security_group_id = aws_security_group.bos_ec2_sg01.id
+#   cidr_ipv4         = "0.0.0.0/0"
+#   from_port         = 80
+#   ip_protocol       = "tcp"
+#   to_port           = 80
+# }
 
 data "http" "myip" {
   url = "https://ipv4.icanhazip.com"
