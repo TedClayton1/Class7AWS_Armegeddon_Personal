@@ -55,7 +55,7 @@ resource "aws_vpc_security_group_egress_rule" "ec2_all_traffic_ipv4" {
 # RDS SG Rules
 resource "aws_vpc_security_group_ingress_rule" "bos_rds_mysql" {
   security_group_id            = aws_security_group.bos_rds_sg01.id
-  referenced_security_group_id = aws_security_group.bos_ec2_sg01.id 
+  referenced_security_group_id = aws_security_group.bos_ec2_sg01.id
 
   from_port   = 3306
   to_port     = 3306
@@ -92,7 +92,7 @@ resource "aws_security_group" "bos_vpce_sg01" {
 # VPC Interface SG Rules
 resource "aws_vpc_security_group_ingress_rule" "bos_vpce_ingress" {
   security_group_id            = aws_security_group.bos_vpce_sg01.id
-  referenced_security_group_id = aws_security_group.bos_ec2_sg01.id 
+  referenced_security_group_id = aws_security_group.bos_ec2_sg01.id
 
   from_port   = 443
   to_port     = 443

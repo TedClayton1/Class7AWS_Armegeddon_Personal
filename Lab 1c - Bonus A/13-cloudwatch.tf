@@ -27,7 +27,7 @@ resource "aws_cloudwatch_metric_alarm" "bos_db_alarm01" {
   statistic           = "Sum"
   threshold           = 3
 
-  alarm_actions       = [aws_sns_topic.bos_sns_topic01.arn]
+  alarm_actions = [aws_sns_topic.bos_sns_topic01.arn]
 
   tags = {
     Name = "${local.name_prefix}-alarm-db-fail"
