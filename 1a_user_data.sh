@@ -12,7 +12,7 @@ import os
 import boto3
 import pymysql
 import logging
-from flask import Flask, request
+from flask import Flask, request, make_response
 
 # Setup logging
 logging.basicConfig(
@@ -53,11 +53,14 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     logger.info("Accessed home page")
-    return """
+    html = """
     <h2>EC2 → RDS Notes App</h2>
     <p>POST /add?note=hello</p>
     <p>GET /list</p>
     """
+    resp = make_response(html, 200)
+    resp.headers["Cache-Control"] = "public, max-age=60"
+    return resp
 
 @app.route("/init")
 def init_db():

@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 93
+Connection: keep-alive
+Date: Sat, 21 Feb 2026 14:07:35 GMT
+Cache-Control: public, max-age=60
+Server: Werkzeug/3.1.6 Python/3.9.25
+X-Cache: Miss from cloudfront
+Via: 1.1 295b916a9e7205a7661c81a0c48d031c.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: IAD55-P10
+X-Amz-Cf-Id: c91nOuQpxjdE4_FRa-F-geWLoQqDsfsl05q7BOaSt23Z2nJsOkbmdQ==
+

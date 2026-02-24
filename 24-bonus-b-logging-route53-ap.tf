@@ -13,9 +13,9 @@ resource "aws_route53_record" "bos_apex_alias01" {
   type    = "A"
 
   alias {
-    name                   = aws_lb.bos_alb01.dns_name
-    zone_id                = aws_lb.bos_alb01.zone_id
-    evaluate_target_health = true
+    name                   = data.aws_cloudfront_distribution.cf.domain_name
+    zone_id                = data.aws_cloudfront_distribution.cf.hosted_zone_id
+    evaluate_target_health = false
   }
 }
 
@@ -23,14 +23,14 @@ resource "aws_route53_record" "bos_apex_alias01" {
 
 
 resource "aws_route53_record" "app" {
-  zone_id = "Z00361313J9Q4ZT1NXNVI"
-  name    = "app.bowtiez.org"
+  zone_id = local.bowtiez_zone_id
+  name    = "app.${var.domain_name}"
   type    = "A"
 
   alias {
-    name                   = aws_lb.bos_alb01.dns_name
-    zone_id                = aws_lb.bos_alb01.zone_id
-    evaluate_target_health = true
+    name                   = data.aws_cloudfront_distribution.cf.domain_name
+    zone_id                = data.aws_cloudfront_distribution.cf.hosted_zone_id
+    evaluate_target_health = false
   }
 }
 
