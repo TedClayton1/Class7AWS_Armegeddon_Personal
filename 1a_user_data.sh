@@ -12,7 +12,8 @@ import os
 import boto3
 import pymysql
 import logging
-from flask import Flask, request, make_response
+from flask import Flask, request, make_response, jsonify
+
 
 # Setup logging
 logging.basicConfig(
@@ -130,6 +131,15 @@ def list_notes():
     except Exception as e:
         logger.error(f"List notes failed: {str(e)}")
         return f"Cannot list notes: {str(e)}", 500
+
+@app.route("/api/public-feed")
+def public_feed():
+    payload = {"feed": ["alpha", "bravo", "charlie"]}
+    resp = make_response(jsonify(payload), 200)
+    resp.headers["Cache-Control"] = "public, max-age=60"
+    return resp
+
+
 
 if __name__ == "__main__":
     logger.info("Starting Flask app")

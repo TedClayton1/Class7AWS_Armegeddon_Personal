@@ -1,0 +1,22 @@
+# data.aws_cloudfront_distribution.cf:
+data "aws_cloudfront_distribution" "cf" {
+    aliases                        = [
+        "app.bowtiez.org",
+        "bowtiez.org",
+        "www.bowtiez.org",
+    ]
+    anycast_ip_list_id             = [90mnull[0m[0m
+    arn                            = "arn:aws:cloudfront::737679990112:distribution/EWRZSYST7FTDH"
+    domain_name                    = "d1cn2vmxucg59n.cloudfront.net"
+    enabled                        = true
+    etag                           = "E3FE7AD5N5R11"
+    hosted_zone_id                 = "Z2FDTNDATAQYW2"
+    id                             = "EWRZSYST7FTDH"
+    in_progress_validation_batches = 0
+    last_modified_time             = "2026-02-21 15:15:29.254 +0000 UTC"
+    status                         = "Deployed"
+    tags                           = {
+        "Name" = "Teds first CloudfFront"
+    }
+    web_acl_id                     = "arn:aws:wafv2:us-east-1:737679990112:global/webacl/CreatedByCloudFront-986a4211/bd2a73a7-5fd4-41bc-81d4-a5c9b85c59e8"
+}

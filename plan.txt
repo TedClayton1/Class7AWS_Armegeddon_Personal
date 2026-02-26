@@ -1,0 +1,123 @@
+[0m[1mvar.cloudfront_distribution_id[0m
+  CloudFront distribution ID, e.g. EWRZSYST7FTDH
+
+  [1mEnter a value:[0m [0m
+[0m[1mrandom_string.origin_header_value: Refreshing state... [id=MdML9tBsTR2rupQ2we4tih55weNGfuMw][0m
+[0m[1mrandom_string.bucket_suffix: Refreshing state... [id=uqvrw8tv][0m
+[0m[1mdata.http.myip: Reading...[0m[0m
+[0m[1mdata.http.myip: Read complete after 0s [id=https://ipv4.icanhazip.com][0m
+[0m[1mdata.aws_route53_zone.primary: Reading...[0m[0m
+[0m[1maws_cloudwatch_log_group.bos_log_group01: Refreshing state... [id=/aws/ec2/bos-rds-app][0m
+[0m[1mdata.aws_cloudfront_cache_policy.caching_optimized: Reading...[0m[0m
+[0m[1maws_iam_role.bos_ec2_role01: Refreshing state... [id=bos-ec2-role01][0m
+[0m[1maws_eip.bos_nat_eip01: Refreshing state... [id=eipalloc-0fbb47629cabc838d][0m
+[0m[1maws_ssm_parameter.bos_db_name_param: Refreshing state... [id=/bos/db/name][0m
+[0m[1maws_sns_topic.bos_sns_topic01: Refreshing state... [id=arn:aws:sns:us-east-1:737679990112:bos-db-incidents][0m
+[0m[1mdata.aws_cloudfront_origin_request_policy.all_viewer_except_host: Reading...[0m[0m
+[0m[1mdata.aws_cloudfront_distribution.cf: Reading...[0m[0m
+[0m[1maws_acm_certificate.bowtiez_cert: Refreshing state... [id=arn:aws:acm:us-east-1:737679990112:certificate/b781cd02-4306-40fa-bcff-80c2ad7163c5][0m
+[0m[1mdata.aws_ec2_managed_prefix_list.cloudfront_origin: Reading...[0m[0m
+[0m[1mdata.aws_cloudfront_origin_request_policy.all_viewer_except_host: Read complete after 0s [id=b689b0a8-53d0-40ab-baf2-68738e2966ac][0m
+[0m[1maws_iam_role.bos_ir_lambda_role01: Refreshing state... [id=bos-ir-lambda-role01][0m
+[0m[1mdata.aws_region.bos_region01: Reading...[0m[0m
+[0m[1mdata.aws_region.bos_region01: Read complete after 0s [id=us-east-1][0m
+[0m[1maws_secretsmanager_secret.bos_db_secret01: Refreshing state... [id=arn:aws:secretsmanager:us-east-1:737679990112:secret:bos/rds/mysql-E7UxFU][0m
+[0m[1mdata.aws_cloudfront_cache_policy.caching_optimized: Read complete after 0s [id=658327ea-f89d-4fab-a63d-7e88639e58f6][0m
+[0m[1mdata.aws_caller_identity.bos_self01: Reading...[0m[0m
+[0m[1mdata.aws_cloudfront_distribution.cf: Read complete after 0s [id=EWRZSYST7FTDH][0m
+[0m[1mdata.aws_cloudfront_origin_request_policy.all_viewer: Reading...[0m[0m
+[0m[1mdata.aws_caller_identity.bos_self01: Read complete after 0s [id=737679990112][0m
+[0m[1mdata.aws_route53_zone.primary: Read complete after 0s [id=Z00361313J9Q4ZT1NXNVI][0m
+[0m[1maws_s3_bucket.bos_alb_logs: Refreshing state... [id=bos-alb-logs-891377135193-uqvrw8tv][0m
+[0m[1mdata.aws_cloudfront_response_headers_policy.security_headers: Reading...[0m[0m
+[0m[1mdata.aws_cloudfront_origin_request_policy.all_viewer: Read complete after 0s [id=216adef6-5c7f-47e4-b989-5492eafa07d3][0m
+[0m[1mdata.aws_cloudfront_cache_policy.caching_disabled: Reading...[0m[0m
+[0m[1mdata.aws_ec2_managed_prefix_list.cloudfront_origin: Read complete after 0s [id=pl-3b927c52][0m
+[0m[1maws_vpc.bos_vpc01: Refreshing state... [id=vpc-0e222fa18d3c7f63e][0m
+[0m[1maws_cloudwatch_metric_alarm.bos_db_alarm01: Refreshing state... [id=bos-db-connection-failure][0m
+[0m[1maws_sns_topic_subscription.bos_sns_sub01: Refreshing state... [id=arn:aws:sns:us-east-1:737679990112:bos-db-incidents:fcdf8266-bbbc-4ad0-a7e9-949d88450130][0m
+[0m[1mdata.aws_cloudfront_response_headers_policy.security_headers: Read complete after 1s [id=67f7725c-6f97-4210-82d7-5512b31e9d03][0m
+[0m[1maws_iam_instance_profile.bos_instance_profile01: Refreshing state... [id=bos-instance-profile01][0m
+[0m[1maws_iam_role_policy_attachment.bos_ec2_ssm_attach: Refreshing state... [id=bos-ec2-role01/arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore][0m
+[0m[1mdata.aws_cloudfront_cache_policy.caching_disabled: Read complete after 1s [id=4135ea2d-6df8-44a3-9df3-4b5a84be39ad][0m
+[0m[1maws_iam_role_policy.bos_ec2_secrets_access: Refreshing state... [id=bos-ec2-role01:secrets-manager-bos-rds][0m
+[0m[1maws_iam_role_policy_attachment.bos_ec2_cw_attach: Refreshing state... [id=bos-ec2-role01/arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy][0m
+[0m[1maws_wafv2_web_acl.bos_waf01[0]: Refreshing state... [id=719b60f0-3baa-430f-afa7-fc2c83c0143a][0m
+[0m[1maws_s3_bucket.bos_ir_reports_bucket01: Refreshing state... [id=bos-ir-reports-737679990112][0m
+[0m[1maws_acm_certificate.cf_cert: Refreshing state... [id=arn:aws:acm:us-east-1:737679990112:certificate/c95de57f-a2c6-444c-867e-b87978f5f741][0m
+[0m[1maws_s3_bucket.bos_waf_logs_bucket01[0]: Refreshing state... [id=aws-waf-logs-bos-737679990112][0m
+[0m[1maws_s3_bucket.bos_alb_logs_bucket01[0]: Refreshing state... [id=bos-alb-logs-737679990112][0m
+[0m[1maws_route53_record.bos_apex_alias01: Refreshing state... [id=Z00361313J9Q4ZT1NXNVI_bowtiez.org_A][0m
+[0m[1maws_route53_record.app: Refreshing state... [id=Z00361313J9Q4ZT1NXNVI_app.bowtiez.org_A][0m
+[0m[1maws_iam_role_policy_attachment.bos_ir_lambda_basiclogs01: Refreshing state... [id=bos-ir-lambda-role01/arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole][0m
+[0m[1maws_wafv2_web_acl.bos_cf_waf01[0]: Refreshing state... [id=09eda034-2935-43ee-a105-e98fb34e2c3b][0m
+[0m[1maws_route53_record.bowtiez_acm_validation["app.bowtiez.org"]: Refreshing state... [id=Z00361313J9Q4ZT1NXNVI__ad101e68564d80479db7ce102303e62b.app.bowtiez.org._CNAME][0m
+[0m[1maws_route53_record.cf_cert_validation["app.bowtiez.org"]: Refreshing state... [id=Z00361313J9Q4ZT1NXNVI__ad101e68564d80479db7ce102303e62b.app.bowtiez.org._CNAME][0m
+[0m[1maws_route53_record.cf_cert_validation["bowtiez.org"]: Refreshing state... [id=Z00361313J9Q4ZT1NXNVI__d99a3801b44bf3161436ef65cd2a0258.bowtiez.org_CNAME][0m
+[0m[1maws_security_group.bos_vpce_sg01: Refreshing state... [id=sg-0c8615079dbef0541][0m
+[0m[1maws_acm_certificate_validation.bowtiez_cert_validation: Refreshing state... [id=2026-01-30 01:25:03.237 +0000 UTC][0m
+[0m[1maws_lb_target_group.bos_tg01: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:737679990112:targetgroup/bos-tg01/8eb79b1c3bb7c30a][0m
+[0m[1maws_subnet.bos_private_subnets[0]: Refreshing state... [id=subnet-0dc158ca2fc8ad920][0m
+[0m[1maws_security_group.bos_rds_sg01: Refreshing state... [id=sg-02b902efcd5813e51][0m
+[0m[1maws_security_group.bos_ec2_sg01: Refreshing state... [id=sg-080f9e411515ba7ae][0m
+[0m[1maws_route_table.bos_public_rt01: Refreshing state... [id=rtb-0f089e64fef64f379][0m
+[0m[1maws_internet_gateway.bos_igw01: Refreshing state... [id=igw-06ad1b23806512bd7][0m
+[0m[1maws_subnet.bos_private_subnets[1]: Refreshing state... [id=subnet-0a75e07423481683d][0m
+[0m[1maws_route_table.bos_private_rt01: Refreshing state... [id=rtb-06d7f1ee29baa2c81][0m
+[0m[1maws_security_group.bos_alb_sg01: Refreshing state... [id=sg-0ddd4b7ecccdd206e][0m
+[0m[1maws_subnet.bos_public_subnets[0]: Refreshing state... [id=subnet-0764f6c243127fc92][0m
+[0m[1maws_vpc_security_group_egress_rule.vpce_all_traffic_ipv4: Refreshing state... [id=sgr-006e827a7a9dbd3ae][0m
+[0m[1maws_subnet.bos_public_subnets[1]: Refreshing state... [id=subnet-0f937b36b19c63381][0m
+[0m[1maws_acm_certificate_validation.cf_cert_validation: Refreshing state... [id=2026-01-30 01:25:04.936 +0000 UTC][0m
+[0m[1maws_s3_bucket_ownership_controls.bos_alb_logs: Refreshing state... [id=bos-alb-logs-891377135193-uqvrw8tv][0m
+[0m[1maws_iam_policy.bos_ir_lambda_policy01: Refreshing state... [id=arn:aws:iam::737679990112:policy/bos-ir-lambda-policy01][0m
+[0m[1maws_lambda_function.bos_ir_lambda01: Refreshing state... [id=bos-ir-reporter01][0m
+[0m[1maws_vpc_security_group_ingress_rule.bos_vpce_ingress: Refreshing state... [id=sgr-0e063a7a7dea8a638][0m
+[0m[1maws_vpc_security_group_egress_rule.ec2_all_traffic_ipv4: Refreshing state... [id=sgr-0c043c7bc9d30bd60][0m
+[0m[1maws_s3_bucket_public_access_block.bos_ir_reports_pab01: Refreshing state... [id=bos-ir-reports-737679990112][0m
+[0m[1maws_vpc_security_group_ingress_rule.bos_rds_mysql: Refreshing state... [id=sgr-0bdaa475031baedcf][0m
+[0m[1maws_route.bos_public_default_route: Refreshing state... [id=r-rtb-0f089e64fef64f3791080289494][0m
+[0m[1maws_s3_bucket_public_access_block.bos_waf_logs_pab01[0]: Refreshing state... [id=aws-waf-logs-bos-737679990112][0m
+[0m[1maws_s3_bucket_policy.bos_alb_logs_policy01[0]: Refreshing state... [id=bos-alb-logs-737679990112][0m
+[0m[1maws_vpc_endpoint.bos_vpce_s3_gw01: Refreshing state... [id=vpce-0cc2cc62899d2567c][0m
+[0m[1maws_route_table_association.bos_private_rta[0]: Refreshing state... [id=rtbassoc-02aa1b1b7790037cb][0m
+[0m[1maws_s3_bucket_ownership_controls.bos_alb_logs_owner01[0]: Refreshing state... [id=bos-alb-logs-737679990112][0m
+[0m[1maws_vpc_endpoint.bos_vpce_ssmmessages01: Refreshing state... [id=vpce-02d39f978b44267f3][0m
+[0m[1maws_instance.bos_ec201_private_bonus: Refreshing state... [id=i-063e3ba3a0894240b][0m
+[0m[1maws_route_table_association.bos_private_rta[1]: Refreshing state... [id=rtbassoc-0d1b9aa680c56950a][0m
+[0m[1maws_db_subnet_group.bos_rds_subnet_group01: Refreshing state... [id=bos-rds-subnet-group01][0m
+[0m[1maws_vpc_endpoint.bos_vpce_kms01: Refreshing state... [id=vpce-06aae529749b57533][0m
+[0m[1maws_vpc_endpoint.bos_vpce_ec2messages01: Refreshing state... [id=vpce-004735d94759106fd][0m
+[0m[1maws_vpc_endpoint.bos_vpce_ssm01: Refreshing state... [id=vpce-02e1de454a3f19899][0m
+[0m[1maws_vpc_endpoint.bos_vpce_secrets01: Refreshing state... [id=vpce-0ae11ceba832a5224][0m
+[0m[1maws_vpc_endpoint.bos_vpce_logs01: Refreshing state... [id=vpce-0e15ce8cde5273e19][0m
+[0m[1maws_vpc_security_group_ingress_rule.bos_ec2_http: Refreshing state... [id=sgr-056f573ae1485734c][0m
+[0m[1maws_vpc_security_group_ingress_rule.bos_alb_https_from_cloudfront: Refreshing state... [id=sgr-02cf558b830539844][0m
+[0m[1maws_nat_gateway.bos_nat01: Refreshing state... [id=nat-05ac08cb70d555047][0m
+[0m[1maws_route_table_association.bos_public_rta[0]: Refreshing state... [id=rtbassoc-05cae5cea0f73d4b1][0m
+[0m[1maws_iam_role_policy_attachment.bos_ir_lambda_attach01: Refreshing state... [id=bos-ir-lambda-role01/arn:aws:iam::737679990112:policy/bos-ir-lambda-policy01][0m
+[0m[1maws_route_table_association.bos_public_rta[1]: Refreshing state... [id=rtbassoc-0d9455ee7b52fd0e9][0m
+[0m[1maws_sns_topic_subscription.bos_ir_lambda_sub01: Refreshing state... [id=arn:aws:sns:us-east-1:737679990112:bos-db-incidents:0a491fe0-8b2c-4c4e-92c3-87c9a4682ba9][0m
+[0m[1maws_lb.bos_alb01: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:737679990112:loadbalancer/app/bos-alb01/5753fb7ec1250e32][0m
+[0m[1maws_lambda_permission.bos_allow_sns_invoke01: Refreshing state... [id=AllowExecutionFromSNS][0m
+[0m[1maws_db_instance.bos_rds01: Refreshing state... [id=db-LETSXLUEIJG5XPA6DAFXBD7A2U][0m
+[0m[1maws_route.bos_private_default_route: Refreshing state... [id=r-rtb-06d7f1ee29baa2c811080289494][0m
+[0m[1maws_lb_target_group_attachment.bos_tg_attach01: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:737679990112:targetgroup/bos-tg01/8eb79b1c3bb7c30a-20260225031655264100000002][0m
+[0m[1maws_secretsmanager_secret_version.bos_db_secret_version01: Refreshing state... [id=arn:aws:secretsmanager:us-east-1:737679990112:secret:bos/rds/mysql-E7UxFU|terraform-2026013001301889410000000f][0m
+[0m[1maws_ssm_parameter.bos_db_port_param: Refreshing state... [id=/bos/db/port][0m
+[0m[1maws_ssm_parameter.bos_db_endpoint_param: Refreshing state... [id=/bos/db/endpoint][0m
+[0m[1maws_lb_listener.bos_https_listener01: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:737679990112:listener/app/bos-alb01/5753fb7ec1250e32/1c1155438e4e9559][0m
+[0m[1maws_cloudwatch_dashboard.bos_dashboard01: Refreshing state... [id=bos-dashboard01][0m
+[0m[1maws_cloudwatch_metric_alarm.bos_alb_5xx_alarm01: Refreshing state... [id=bos-alb-5xx-alarm01][0m
+[0m[1maws_lb_listener.bos_http_listener01: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:737679990112:listener/app/bos-alb01/5753fb7ec1250e32/0635d04c94084e0c][0m
+[0m[1maws_lb_listener_rule.bos_allow_origin_header01: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:737679990112:listener-rule/app/bos-alb01/5753fb7ec1250e32/1c1155438e4e9559/d9854659a9224e58][0m
+[0m[1maws_lb_listener_rule.bos_deny_missing_origin_header01: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:737679990112:listener-rule/app/bos-alb01/5753fb7ec1250e32/1c1155438e4e9559/f1b52fe9a4136fb3][0m
+[0m[1maws_lb_listener_rule.bos_allow_origin_header_http: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:737679990112:listener-rule/app/bos-alb01/5753fb7ec1250e32/0635d04c94084e0c/0717dde41b84a568][0m
+[0m[1maws_lb_listener_rule.bos_deny_missing_origin_header_http: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:737679990112:listener-rule/app/bos-alb01/5753fb7ec1250e32/0635d04c94084e0c/8a743e346c991946][0m
+[0m[1maws_wafv2_web_acl_association.bos_waf_assoc01[0]: Refreshing state... [id=arn:aws:wafv2:us-east-1:737679990112:regional/webacl/bos-waf01/719b60f0-3baa-430f-afa7-fc2c83c0143a,arn:aws:elasticloadbalancing:us-east-1:737679990112:loadbalancer/app/bos-alb01/5753fb7ec1250e32][0m
+[0m[1maws_wafv2_web_acl_logging_configuration.bos_waf_logging_s3_01[0]: Refreshing state... [id=arn:aws:wafv2:us-east-1:737679990112:regional/webacl/bos-waf01/719b60f0-3baa-430f-afa7-fc2c83c0143a][0m
+
+[0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
+
+[0mTerraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.

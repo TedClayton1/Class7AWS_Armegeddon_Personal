@@ -27,6 +27,14 @@ data "aws_cloudfront_response_headers_policy" "security_headers" {
   name = "Managed-SecurityHeadersPolicy"
 }
 
+data "aws_cloudfront_cache_policy" "origin_driven_qs" {
+  name = "UseOriginCacheControlHeaders-QueryStrings"
+}
+
+data "aws_cloudfront_cache_policy" "origin_driven" {
+  name = "UseOriginCacheControlHeaders"
+}
+
 #############################################
 # Example usage (attach to your distribution behaviors)
 #############################################
