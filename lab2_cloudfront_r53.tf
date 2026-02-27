@@ -14,9 +14,9 @@ data "aws_route53_zone" "primary" {
   private_zone = false
 }
 
-data "aws_cloudfront_distribution" "cf" {
-  id = var.cloudfront_distribution_id
-}
+# data "aws_cloudfront_distribution" "cf" {
+#   id = var.cloudfront_distribution_id
+# }
 
 # Apex record: bowtiez.org -> CloudFront
 # resource "aws_route53_record" "apex_to_cloudfront" {
