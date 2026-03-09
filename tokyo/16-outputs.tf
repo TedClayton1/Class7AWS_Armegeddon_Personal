@@ -19,9 +19,9 @@ output "bos_rds_endpoint" {
   value = aws_db_instance.bos_rds01.address
 }
 
-output "bos_sns_topic_arn" {
-  value = aws_sns_topic.bos_sns_topic01.arn
-}
+#output "bos_sns_topic_arn" {
+# value = aws_sns_topic.bos_sns_topic01.arn
+#}
 
 output "bos_log_group_name" {
   value = aws_cloudwatch_log_group.bos_log_group01.name
@@ -76,27 +76,31 @@ output "bos_dashboard_name" {
 }
 
 # Explanation: Output report bucket—bos needs the archive coordinates for grading.
-output "bos_ir_reports_bucket" {
-  value = aws_s3_bucket.bos_ir_reports_bucket01.bucket
-}
+# output "bos_ir_reports_bucket" {
+#   value = aws_s3_bucket.bos_ir_reports_bucket01.bucket
+# }
 
 output "bos_waf_log_destination" {
   value = var.waf_log_destination
 }
 
-output "bos_waf_cw_log_group_name" {
-  value = var.waf_log_destination == "cloudwatch" ? aws_cloudwatch_log_group.bos_waf_log_group01[0].name : null
-}
+#output "bos_waf_cw_log_group_name" {
+# value = var.waf_log_destination == "cloudwatch" ? aws_cloudwatch_log_group.bos_waf_log_group01[0].name : null
+# }
 
-output "bos_waf_logs_s3_bucket" { value = var.waf_log_destination == "s3" ? aws_s3_bucket.bos_waf_logs_bucket01[0].bucket : null }
+# output "bos_waf_logs_s3_bucket" { 
+# value = var.waf_log_destination == "s3" ? aws_s3_bucket.bos_waf_logs_bucket01[0].bucket : null 
+# }
 
-output "bos_waf_firehose_name" { value = var.waf_log_destination == "firehose" ? aws_kinesis_firehose_delivery_stream.bos_waf_firehose01[0].name : null }
+# output "bos_waf_firehose_name" { 
+# value = var.waf_log_destination == "firehose" ? aws_kinesis_firehose_delivery_stream.bos_waf_firehose01[0].name : null
+# }
 
 output "bowtiez_route53_zone_id" { value = local.bowtiez_zone_id }
 
 output "bowtiez_app_url_https" { value = "https://${var.app_subdomain}.${var.domain_name}" }
 
-output "origin_header_value" {
-  value     = random_string.origin_header_value.result
-  sensitive = true
-}
+# output "origin_header_value" {
+#   value     = random_string.origin_header_value.result
+#   sensitive = true
+# }

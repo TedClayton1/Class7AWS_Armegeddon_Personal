@@ -11,21 +11,21 @@ resource "aws_lb" "bos_alb01" {
   #security_groups    = [aws_security_group.bos_alb_sg01.id] 
   subnets = aws_subnet.bos_public_subnets[*].id
 
-  access_logs {
-    bucket  = aws_s3_bucket.bos_alb_logs_bucket01[0].bucket
-    prefix  = "alb-logs"
-    enabled = true
-  }
+  # access_logs {
+  #   bucket  = aws_s3_bucket.bos_alb_logs_bucket01[0].bucket
+  #   prefix  = "alb-logs"
+  #   enabled = true
+  # }
 
   security_groups = [
     aws_security_group.bos_alb_sg01.id
   ]
 
 
-  depends_on = [
-    aws_s3_bucket_policy.bos_alb_logs_policy01[0],
-    aws_s3_bucket_ownership_controls.bos_alb_logs_owner01[0]
-  ]
+  # depends_on = [
+  #   aws_s3_bucket_policy.bos_alb_logs_policy01[0],
+  #   aws_s3_bucket_ownership_controls.bos_alb_logs_owner01[0]
+  # ]
 
 
 

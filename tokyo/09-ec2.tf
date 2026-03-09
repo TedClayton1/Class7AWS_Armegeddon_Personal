@@ -4,7 +4,7 @@
 
 # Explanation: bos refuses to carry static keys—this role lets EC2 assume permissions safely.
 resource "aws_iam_role" "bos_ec2_role01" {
-  name = "${local.name_prefix}-ec2-role01"
+  name = "${local.name_prefix}-ec2-role01-tokyo"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -38,7 +38,7 @@ resource "aws_iam_role_policy_attachment" "bos_ec2_cw_attach" {
 
 # Explanation: Instance profile is the harness that straps the role onto the EC2 like bandolier ammo.
 resource "aws_iam_instance_profile" "bos_instance_profile01" {
-  name = "${local.name_prefix}-instance-profile01"
+  name = "${local.name_prefix}-instance-profile01-tokyo"
   role = aws_iam_role.bos_ec2_role01.name
 }
 

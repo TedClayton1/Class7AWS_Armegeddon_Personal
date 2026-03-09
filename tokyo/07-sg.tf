@@ -197,13 +197,13 @@ resource "aws_security_group" "bos_alb_sg01" {
 
 
 # Crete an ALB SG ingress rule that allows only that prefex list on 443
-resource "aws_vpc_security_group_ingress_rule" "bos_alb_https_from_cloudfront" {
-  security_group_id = aws_security_group.bos_alb_sg01.id
-  from_port         = 443
-  to_port           = 443
-  ip_protocol       = "tcp"
-  prefix_list_id    = data.aws_ec2_managed_prefix_list.cloudfront_origin.id
-}
+# resource "aws_vpc_security_group_ingress_rule" "bos_alb_https_from_cloudfront" {
+#   security_group_id = aws_security_group.bos_alb_sg01.id
+#   from_port         = 443
+#   to_port           = 443
+#   ip_protocol       = "tcp"
+#   prefix_list_id    = data.aws_ec2_managed_prefix_list.cloudfront_origin.id
+# }
 
 # resource "aws_vpc_security_group_ingress_rule" "bos_alb_http_from_cloudfront" {
 #   security_group_id = aws_security_group.bos_alb_sg01.id
