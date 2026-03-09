@@ -104,3 +104,22 @@ output "bowtiez_app_url_https" { value = "https://${var.app_subdomain}.${var.dom
 #   value     = random_string.origin_header_value.result
 #   sensitive = true
 # }
+
+
+output "tokyo_vpc_cidr" {
+  value  = aws_vpc.bos_vpc01.cidr_block
+}
+
+output "tokyo_rds_endpoint" {
+  value = aws_db_instance.bos_rds01.address
+}
+
+#output "tokyo_tgw_id" {
+#  value = try(aws_ec2_transit_gateway.bos_tgw01.id, null)
+#}
+
+
+
+
+
+
