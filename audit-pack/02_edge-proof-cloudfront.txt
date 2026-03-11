@@ -1,0 +1,59 @@
+=== CloudFront edge proof ===
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 37
+Connection: keep-alive
+Date: Tue, 10 Mar 2026 19:29:46 GMT
+Cache-Control: public, max-age=60
+Server: Werkzeug/3.1.6 Python/3.9.25
+X-Cache: Miss from cloudfront
+Via: 1.1 58c3ce6e485adff4a9658be41214af94.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: IAD55-P10
+X-Amz-Cf-Id: dBS4ODlftcGhsS4MnpJdmvnx647ezn6cH_BjFfe6T1Q9xVWx_VAKrg==
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 37
+Connection: keep-alive
+Date: Tue, 10 Mar 2026 19:37:11 GMT
+Cache-Control: public, max-age=60
+Server: Werkzeug/3.1.6 Python/3.9.25
+X-Cache: Miss from cloudfront
+Via: 1.1 dd544307ffc0aa911ba150f7ec4bd3b4.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: IAD55-P10
+X-Amz-Cf-Id: 0wlfawMomAPX8P9tm2ChTkYmklDOOjxJRxH1avv9reE3QvbN8W8-sQ==
+
+######################################################################################################################################
+
+CloudFront standard logging check:
+aws cloudfront get-distribution-config --id EWRZSYST7FTDH --query "DistributionConfig.Logging"
+
+Result:
+Enabled = false
+
+Conclusion:
+CloudFront standard S3 logging is not enabled in the deployed environment, so edge proof is provided using live HTTP response headers from curl 
+rather than bucket-based log evidence.
+
+*******************************************Cloudfront standard logging verification********************************************************
+
+CloudFront standard logging verification
+
+Command executed:
+aws cloudfront get-distribution-config --id EWRZSYST7FTDH \
+--query "DistributionConfig.Logging"
+
+Result:
+Enabled: false
+
+Conclusion:
+CloudFront standard S3 logging is not enabled in the deployed environment.
+Therefore S3 bucket log verification and file download steps are not applicable.
+Edge verification is instead demonstrated through HTTP response headers captured via curl.
+
+***********************************************************************************************************************
+
+CloudFront logging note:
+The lab reference environment assumes bucket Class_Lab3 with prefix Chwebacca-logs/.
+In the deployed environment for this submission, aws sts get-caller-identity returned account 737679990112, aws s3 ls s3://Class_Lab3/ returned NoSuchBucket, and aws cloudfront get-distribution-config --id EWRZSYST7FTDH --query "DistributionConfig.Logging" showed Enabled=false.
+Therefore CloudFront standard log analysis was not applicable, and edge proof was provided using curl header evidence instead.

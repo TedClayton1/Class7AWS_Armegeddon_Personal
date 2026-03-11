@@ -1,0 +1,18 @@
+{
+  "tokyo_rds": [
+    {
+      "region": "ap-northeast-1",
+      "id": "bos-rds01",
+      "az": "ap-northeast-1c",
+      "endpoint": "bos-rds01.cnyysooqk5m1.ap-northeast-1.rds.amazonaws.com"
+    },
+    {
+      "region": "ap-northeast-1",
+      "id": "shinjuku-rds",
+      "az": "ap-northeast-1c",
+      "endpoint": "shinjuku-rds.cnyysooqk5m1.ap-northeast-1.rds.amazonaws.com"
+    }
+  ],
+  "saopaulo_rds": [],
+  "assertion": "PASS"
+}

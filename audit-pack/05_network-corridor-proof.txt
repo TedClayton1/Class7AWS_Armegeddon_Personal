@@ -1,0 +1,154 @@
+{
+  "tokyo": {
+    "region": "ap-northeast-1",
+    "transit_gateways": [
+      {
+        "TransitGatewayId": "tgw-071c9872869157623",
+        "TransitGatewayArn": "arn:aws:ec2:ap-northeast-1:737679990112:transit-gateway/tgw-071c9872869157623",
+        "State": "available",
+        "OwnerId": "737679990112",
+        "Description": "Tokyo TGW - Lab 3A",
+        "CreationTime": "2026-03-03 03:32:26+00:00",
+        "Options": {
+          "AmazonSideAsn": 64512,
+          "AutoAcceptSharedAttachments": "disable",
+          "DefaultRouteTableAssociation": "enable",
+          "AssociationDefaultRouteTableId": "tgw-rtb-060000e8e23896a39",
+          "DefaultRouteTablePropagation": "enable",
+          "PropagationDefaultRouteTableId": "tgw-rtb-060000e8e23896a39",
+          "VpnEcmpSupport": "enable",
+          "DnsSupport": "enable",
+          "SecurityGroupReferencingSupport": "disable",
+          "MulticastSupport": "disable",
+          "EncryptionSupport": {
+            "EncryptionState": "disabled"
+          }
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "shinjuku-tgw"
+          }
+        ]
+      }
+    ],
+    "attachments": [
+      {
+        "TransitGatewayAttachmentId": "tgw-attach-0195f6c50b2fc6695",
+        "TransitGatewayId": "tgw-071c9872869157623",
+        "TransitGatewayOwnerId": "737679990112",
+        "ResourceOwnerId": "737679990112",
+        "ResourceType": "peering",
+        "ResourceId": "tgw-04c453ec74d3c0661",
+        "State": "available",
+        "Association": {
+          "TransitGatewayRouteTableId": "tgw-rtb-09de268403356fafc",
+          "State": "associated"
+        },
+        "CreationTime": "2026-03-03 04:06:31+00:00",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "shinjuku-to-liberdade-peer"
+          }
+        ]
+      },
+      {
+        "TransitGatewayAttachmentId": "tgw-attach-09cc78ae2e31c95d6",
+        "TransitGatewayId": "tgw-071c9872869157623",
+        "TransitGatewayOwnerId": "737679990112",
+        "ResourceOwnerId": "737679990112",
+        "ResourceType": "vpc",
+        "ResourceId": "vpc-066b451853a38bf18",
+        "State": "available",
+        "Association": {
+          "TransitGatewayRouteTableId": "tgw-rtb-09de268403356fafc",
+          "State": "associated"
+        },
+        "CreationTime": "2026-03-03 03:33:33+00:00",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "shinjuku-tgw-attach"
+          }
+        ]
+      }
+    ]
+  },
+  "saopaulo": {
+    "region": "sa-east-1",
+    "transit_gateways": [
+      {
+        "TransitGatewayId": "tgw-04c453ec74d3c0661",
+        "TransitGatewayArn": "arn:aws:ec2:sa-east-1:737679990112:transit-gateway/tgw-04c453ec74d3c0661",
+        "State": "available",
+        "OwnerId": "737679990112",
+        "Description": "Sao Paulo TGW - Lab 3A",
+        "CreationTime": "2026-03-03 03:32:26+00:00",
+        "Options": {
+          "AmazonSideAsn": 64512,
+          "AutoAcceptSharedAttachments": "disable",
+          "DefaultRouteTableAssociation": "enable",
+          "AssociationDefaultRouteTableId": "tgw-rtb-04af1a56314e2d1c2",
+          "DefaultRouteTablePropagation": "enable",
+          "PropagationDefaultRouteTableId": "tgw-rtb-04af1a56314e2d1c2",
+          "VpnEcmpSupport": "enable",
+          "DnsSupport": "enable",
+          "SecurityGroupReferencingSupport": "disable",
+          "MulticastSupport": "disable",
+          "EncryptionSupport": {
+            "EncryptionState": "disabled"
+          }
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "liberdade-tgw"
+          }
+        ]
+      }
+    ],
+    "attachments": [
+      {
+        "TransitGatewayAttachmentId": "tgw-attach-0195f6c50b2fc6695",
+        "TransitGatewayId": "tgw-04c453ec74d3c0661",
+        "TransitGatewayOwnerId": "737679990112",
+        "ResourceOwnerId": "737679990112",
+        "ResourceType": "peering",
+        "ResourceId": "tgw-071c9872869157623",
+        "State": "available",
+        "Association": {
+          "TransitGatewayRouteTableId": "tgw-rtb-07cffdb1c52c3aa87",
+          "State": "associated"
+        },
+        "CreationTime": "2026-03-03 04:06:40+00:00",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "liberdade-accept-shinjuku-peer"
+          }
+        ]
+      },
+      {
+        "TransitGatewayAttachmentId": "tgw-attach-08cd90390208b6dba",
+        "TransitGatewayId": "tgw-04c453ec74d3c0661",
+        "TransitGatewayOwnerId": "737679990112",
+        "ResourceOwnerId": "737679990112",
+        "ResourceType": "vpc",
+        "ResourceId": "vpc-0e025276c188e7e07",
+        "State": "available",
+        "Association": {
+          "TransitGatewayRouteTableId": "tgw-rtb-07cffdb1c52c3aa87",
+          "State": "associated"
+        },
+        "CreationTime": "2026-03-03 03:33:12+00:00",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "liberdade-tgw-attach"
+          }
+        ]
+      }
+    ]
+  }
+}

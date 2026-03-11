@@ -1,0 +1,59 @@
+{
+    "NextMarker": "bos-cf-waf01",
+    "WebACLs": [
+        {
+            "Name": "CreatedByCloudFront-986a4211",
+            "Id": "bd2a73a7-5fd4-41bc-81d4-a5c9b85c59e8",
+            "Description": "",
+            "LockToken": "40647bb6-2cc9-4635-947c-7354e4821c5e",
+            "ARN": "arn:aws:wafv2:us-east-1:737679990112:global/webacl/CreatedByCloudFront-986a4211/bd2a73a7-5fd4-41bc-81d4-a5c9b85c59e8"
+        },
+        {
+            "Name": "bos-cf-waf01",
+            "Id": "09eda034-2935-43ee-a105-e98fb34e2c3b",
+            "Description": "",
+            "LockToken": "4ddf111a-2df8-4876-8025-54281a10974e",
+            "ARN": "arn:aws:wafv2:us-east-1:737679990112:global/webacl/bos-cf-waf01/09eda034-2935-43ee-a105-e98fb34e2c3b"
+        }
+    ]
+}
+{
+    "WebACL": {
+        "Name": "bos-cf-waf01",
+        "Id": "09eda034-2935-43ee-a105-e98fb34e2c3b",
+        "ARN": "arn:aws:wafv2:us-east-1:737679990112:global/webacl/bos-cf-waf01/09eda034-2935-43ee-a105-e98fb34e2c3b",
+        "DefaultAction": {
+            "Allow": {}
+        },
+        "Description": "",
+        "Rules": [
+            {
+                "Name": "AWSManagedRulesCommonRuleSet",
+                "Priority": 1,
+                "Statement": {
+                    "ManagedRuleGroupStatement": {
+                        "VendorName": "AWS",
+                        "Name": "AWSManagedRulesCommonRuleSet"
+                    }
+                },
+                "OverrideAction": {
+                    "None": {}
+                },
+                "VisibilityConfig": {
+                    "SampledRequestsEnabled": true,
+                    "CloudWatchMetricsEnabled": true,
+                    "MetricName": "bos-cf-waf-common"
+                }
+            }
+        ],
+        "VisibilityConfig": {
+            "SampledRequestsEnabled": true,
+            "CloudWatchMetricsEnabled": true,
+            "MetricName": "bos-cf-waf01"
+        },
+        "Capacity": 700,
+        "ManagedByFirewallManager": false,
+        "LabelNamespace": "awswaf:737679990112:webacl:bos-cf-waf01:"
+    },
+    "LockToken": "4ddf111a-2df8-4876-8025-54281a10974e"
+}
