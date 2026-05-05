@@ -61,7 +61,7 @@ resource "aws_db_instance" "shinjuku_rds" {
 
   db_name  = "lab3adb"
   username = "adminuser"
-  password = "ChangeMe1234!"
+  password = var.db_password
   port     = 3306
 
   db_subnet_group_name   = aws_db_subnet_group.shinjuku_db_subnet_group.name
