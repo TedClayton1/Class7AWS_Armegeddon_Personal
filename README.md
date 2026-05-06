@@ -133,3 +133,7 @@ These patterns are commonly used in production environments to balance performan
 terraform init
 terraform plan
 terraform apply
+
+## 📌 Note
+
+This project was originally based on a lab framework and was significantly extended with additional features, including CloudFront integration, security improvements, and architectural enhancements.
